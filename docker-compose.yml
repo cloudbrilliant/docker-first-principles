@@ -1,0 +1,16 @@
+services:
+    app:
+        image: python:3.12.6-slim
+        working_dir: /app
+        # build:
+        #     context: .
+        #     # dockerfile: Dockerfile
+        volumes:
+            - .:/app
+        ports:
+            - "5001:5001"
+            - "5002:5002"
+        command: >
+            sh -c "pip install --no-cache-dir --upgrade -r requirements.txt && /bin/bash"
+        stdin_open: true
+        tty: true
